@@ -6,7 +6,19 @@ import { workData, blogData } from '../data/cms';
 import './Home.css';
 
 const Skills = React.lazy(() => import('../components/Skills'));
-const Lanyard = React.lazy(() => import('../components/Lanyard'));
+// Preload the Lanyard chunk in the background without executing it immediately
+const Lanyard = React.lazy(() => {
+  return new Promise(resolve => {
+    // Wait until the main thread is idle before actually requesting the heavy 3D chunk
+    if ('requestIdleCallback' in window) {
+      window.requestIdleCallback(() => {
+        resolve(import('../components/Lanyard'));
+      });
+    } else {
+      setTimeout(() => resolve(import('../components/Lanyard')), 500);
+    }
+  });
+});
 
 // Scroll-linked word-by-word reveal component
 const ScrollRevealQuote: React.FC<{ text: string }> = React.memo(({ text }) => {
@@ -76,6 +88,13 @@ export const Home: React.FC = () => {
   // Form state
   const [formState, setFormState] = useState({ name: '', email: '', project: '' });
   const [formStatus, setFormStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+  
+  // Defer rendering of the heavy 3D component so HTML/CSS paints instantly
+  const [show3D, setShow3D] = useState(false);
+  useEffect(() => {
+    const timer = setTimeout(() => setShow3D(true), 250);
+    return () => clearTimeout(timer);
+  }, []);
 
   const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -161,8 +180,12 @@ export const Home: React.FC = () => {
           </h1>
 
           {/* Interactive Lanyard */}
-          <Suspense fallback={null}>
-            <Lanyard position={[0, 0, 24]} gravity={[0, -40, 0]} frontImage="/avatar.png" backImage="/avatar.png" />
+          <Suspense fallback={
+            <div className="lanyard-fallback">
+              <div className="lanyard-spinner"></div>
+            </div>
+          }>
+            {show3D && <Lanyard position={[0, 0, 24]} gravity={[0, -40, 0]} frontImage="/avatar.png" backImage="/avatar.png" />}
           </Suspense>
 
           {/* Bottom row */}
