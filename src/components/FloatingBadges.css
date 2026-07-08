@@ -1,0 +1,61 @@
+.floating-badges-container {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  z-index: 99999;
+}
+
+.floating-badge-btn {
+  background-color: var(--color-dark-bg);
+  color: var(--color-dark-text);
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 600;
+  padding: 10px 16px;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  border: 1px solid rgba(250, 247, 243, 0.1);
+  cursor: pointer;
+  transition: var(--transition-smooth);
+}
+
+.floating-badge-btn:hover {
+  background-color: #222222;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+.floating-framer-badge {
+  background-color: #ffffff;
+  color: #111111;
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 600;
+  padding: 8px 12px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(17, 17, 17, 0.08);
+}
+
+.framer-icon {
+  flex-shrink: 0;
+}
+
+@media (max-width: 768px) {
+  .floating-badges-container {
+    bottom: 16px;
+    right: 16px;
+  }
+  
+  .floating-badge-btn {
+    padding: 8px 12px;
+    font-size: 12px;
+  }
+}

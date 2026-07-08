@@ -1,0 +1,173 @@
+@import url('https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+@font-face {
+  font-family: "Clash Grotesk";
+  src: url("https://framerusercontent.com/third-party-assets/fontshare/wf/O462VY6O6FTQCS72XVMTQHXAM4NN5CY3/TWF57ITZORMJ3MEWLQQIVO6BMXIB6FUR/MJQFMMOTEGNXDVM7HBBDTQHTVB2M7Y6G.woff2") format("woff2");
+  font-display: swap;
+  font-style: normal;
+  font-weight: 400 700;
+}
+
+:root {
+  --color-bg: #FAF7F3;
+  --color-text-primary: #111111;
+  --color-text-secondary: rgba(17, 17, 17, 0.7);
+  --color-card-bg: #ffffff;
+  --color-border: rgba(17, 17, 17, 0.08);
+  --color-accent: #111111;
+  --color-dark-bg: #111111;
+  --color-dark-text: #FAF7F3;
+  
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-heading: 'Clash Grotesk', 'Space Grotesk', 'Archivo', sans-serif;
+  --font-display: 'Clash Grotesk', 'Space Grotesk', sans-serif;
+  
+  --transition-smooth: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-spring: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text-primary);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  opacity: 0.04;
+  pointer-events: none;
+  z-index: 99999;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: var(--transition-smooth);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-text-primary);
+  outline-offset: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+button, input, textarea {
+  font-family: inherit;
+}
+
+/* Custom Selection */
+::selection {
+  background-color: var(--color-text-primary);
+  color: var(--color-bg);
+}
+
+/* Page Layout */
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main-content {
+  flex-grow: 1;
+}
+
+/* Utility Layouts */
+.container-custom {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ============================== */
+/* Scroll Reveal Animation System */
+/* ============================== */
+
+/* Base reveal state – invisible, translated */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(40px);
+  transition:
+    opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+    filter  0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Variants */
+[data-reveal="fade"] {
+  transform: none;
+}
+
+[data-reveal="scale"] {
+  transform: scale(0.92);
+}
+
+[data-reveal="slide-left"] {
+  transform: translateX(-50px);
+}
+
+[data-reveal="slide-right"] {
+  transform: translateX(50px);
+}
+
+/* Revealed state */
+[data-reveal].revealed {
+  opacity: 1;
+  transform: none;
+  filter: none;
+}
+
+/* Smooth page-load entrance for hero */
+@keyframes hero-entrance {
+  0% {
+    opacity: 0;
+    transform: translateY(60px) scale(0.96);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.hero-entrance-anim {
+  animation: hero-entrance 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.hero-entrance-anim-delay-1 {
+  animation: hero-entrance 1s cubic-bezier(0.16, 1, 0.3, 1) 0.15s forwards;
+  opacity: 0;
+}
+
+.hero-entrance-anim-delay-2 {
+  animation: hero-entrance 1s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
+  opacity: 0;
+}
+
+.hero-entrance-anim-delay-3 {
+  animation: hero-entrance 1s cubic-bezier(0.16, 1, 0.3, 1) 0.5s forwards;
+  opacity: 0;
+}

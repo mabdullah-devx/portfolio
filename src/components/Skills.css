@@ -1,0 +1,139 @@
+.skills-section {
+  background-color: var(--color-bg);
+  color: var(--color-text-primary);
+  padding: 120px 0;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.skills-title {
+  font-family: var(--font-heading);
+  font-size: 36px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--color-text-primary);
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.marquee-container {
+  width: 100vw;
+  max-width: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  /* Fading edges so it smoothly disappears at the sides */
+  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: scroll 40s linear infinite;
+}
+
+/* Gap needs to be exactly matching the inner content gap to ensure perfect loop */
+.marquee-content {
+  display: flex;
+  gap: 24px;
+  padding-right: 24px; /* Essential for seamless loop */
+}
+
+.marquee-track.reverse {
+  animation-direction: reverse;
+}
+
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
+@keyframes scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.skill-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 32px;
+  border-radius: 100px; /* Pill shape */
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+/* Automatically adjust for Light Mode if the theme uses it */
+@media (prefers-color-scheme: light) {
+  .skill-card {
+    background: rgba(0, 0, 0, 0.03);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+  }
+}
+
+.skill-card:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-4px);
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.2);
+}
+
+.skill-icon {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.skill-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.skill-name {
+  font-family: var(--font-body);
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+  color: var(--color-text-secondary);
+}
+
+@media (max-width: 768px) {
+  .skills-title {
+    font-size: 28px;
+    margin-bottom: 40px;
+  }
+  .skill-card {
+    padding: 12px 24px;
+    gap: 12px;
+  }
+  .skill-icon {
+    width: 24px;
+    height: 24px;
+  }
+  .skill-name {
+    font-size: 15px;
+  }
+  .marquee-container {
+    gap: 20px;
+  }
+  .marquee-content {
+    gap: 16px;
+    padding-right: 16px;
+  }
+}

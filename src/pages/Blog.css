@@ -1,0 +1,122 @@
+.blog-page-container {
+  padding-top: 140px;
+}
+
+.blog-header {
+  padding-bottom: 60px;
+}
+
+.blog-title {
+  font-family: var(--font-display);
+  font-size: 64px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -2px;
+  margin-bottom: 20px;
+}
+
+.blog-description {
+  font-size: 18px;
+  color: var(--color-text-secondary);
+  max-width: 600px;
+}
+
+.blog-grid-section {
+  padding: 80px 0 100px;
+}
+
+.blog-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 48px 32px;
+}
+
+.blog-post-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.blog-post-link {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  height: 100%;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.blog-post-link:hover {
+  transform: translateY(-6px);
+}
+
+.blog-post-image-wrap {
+  width: 100%;
+  aspect-ratio: 16/10;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  background-color: var(--color-bg);
+  transition: box-shadow 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.blog-post-image-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.blog-post-link:hover .blog-post-image-wrap img {
+  transform: scale(1.05);
+}
+
+.blog-post-link:hover .blog-post-image-wrap {
+  box-shadow: 0 12px 40px rgba(17, 17, 17, 0.12);
+}
+
+.blog-post-content {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex-grow: 1;
+}
+
+.blog-post-meta {
+  display: flex;
+  font-size: 12px;
+  font-weight: 600;
+  color: #7a7a7a;
+  text-transform: uppercase;
+}
+
+.blog-post-title {
+  font-family: var(--font-heading);
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  line-height: 1.3;
+}
+
+.blog-post-summary {
+  font-size: 14px;
+  color: var(--color-text-secondary);
+  line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+  .blog-page-container {
+    padding-top: 100px;
+  }
+  
+  .blog-title {
+    font-size: 48px;
+  }
+  
+  .blog-description {
+    font-size: 16px;
+  }
+  
+  .blog-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+}
