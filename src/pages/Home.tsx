@@ -162,9 +162,9 @@ export const Home: React.FC = () => {
             <span className="hero-title-line">ENGINEER</span>
           </h1>
 
-          {/* Center Image */}
-          <div className="hero-center-image hero-entrance-anim-delay" style={{ textAlign: 'center', margin: '40px 0' }}>
-            <img src="/avatar.png" alt="M Abdullah" className="hero-avatar" style={{ width: 'clamp(120px, 14vw, 200px)', borderRadius: '20px' }} />
+          {/* Center Image with floating/hover effect */}
+          <div className="hero-avatar-float hero-entrance-anim-delay">
+            <img src="/avatar.png" alt="M Abdullah" loading="eager" />
           </div>
 
           {/* Bottom row */}

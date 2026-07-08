@@ -1,6 +1,7 @@
 /* Home Container */
 .home-container {
-  padding-top: 80px; /* offset fixed header */
+  padding-top: 80px;
+  /* offset fixed header */
 }
 
 /* ===================== */
@@ -44,26 +45,51 @@
 }
 
 @keyframes hero-float-star {
-  0% { transform: translateY(0) rotate(0deg) scale(1); }
-  25% { transform: translateY(-12px) rotate(6deg) scale(1.03); }
-  50% { transform: translateY(-20px) rotate(14deg) scale(1); }
-  75% { transform: translateY(-8px) rotate(6deg) scale(0.97); }
-  100% { transform: translateY(0) rotate(0deg) scale(1); }
+  0% {
+    transform: translateY(0) rotate(0deg) scale(1);
+  }
+
+  25% {
+    transform: translateY(-12px) rotate(6deg) scale(1.03);
+  }
+
+  50% {
+    transform: translateY(-20px) rotate(14deg) scale(1);
+  }
+
+  75% {
+    transform: translateY(-8px) rotate(6deg) scale(0.97);
+  }
+
+  100% {
+    transform: translateY(0) rotate(0deg) scale(1);
+  }
 }
 
 @keyframes hero-float-bolt {
-  0% { transform: translateY(0) rotate(0deg) scale(1); }
-  33% { transform: translateY(16px) rotate(-10deg) scale(0.96); }
-  66% { transform: translateY(6px) rotate(-4deg) scale(1.04); }
-  100% { transform: translateY(0) rotate(0deg) scale(1); }
+  0% {
+    transform: translateY(0) rotate(0deg) scale(1);
+  }
+
+  33% {
+    transform: translateY(16px) rotate(-10deg) scale(0.96);
+  }
+
+  66% {
+    transform: translateY(6px) rotate(-4deg) scale(1.04);
+  }
+
+  100% {
+    transform: translateY(0) rotate(0deg) scale(1);
+  }
 }
 
 /* Title */
 .hero-title {
   font-family: var(--font-display);
-  font-size: clamp(56px, 11vw, 160px);
+  font-size: clamp(64px, 12vw, 180px);
   font-weight: 800;
-  line-height: 0.88;
+  line-height: 0.98;
   letter-spacing: -0.04em;
   color: var(--color-text-primary);
   text-align: center;
@@ -81,8 +107,8 @@
 /* Avatar floating over the title */
 .hero-avatar-float {
   position: absolute;
-  top: 50%;
-  left: 50%;
+  top: 88%;
+  left: 60%;
   transform: translate(-50%, -50%);
   width: clamp(120px, 14vw, 200px);
   height: clamp(140px, 16vw, 230px);
@@ -98,7 +124,8 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: 50% 10%; /* Crop to head & upper shoulders */
+  object-position: 50% 10%;
+  /* Crop to head & upper shoulders */
   filter: grayscale(80%) brightness(0.6);
   transition: filter 0.6s ease, transform 0.4s ease;
 }
@@ -227,6 +254,7 @@
   color: #7a7a7a;
   margin-bottom: 40px;
 }
+
 .quote-section {
   padding: 120px 0;
 }
@@ -426,8 +454,8 @@
   min-height: 280px;
   box-shadow: 0 4px 16px rgba(17, 17, 17, 0.01);
   transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
-              box-shadow 0.5s cubic-bezier(0.16, 1, 0.3, 1),
-              background-color 0.4s ease, color 0.4s ease;
+    box-shadow 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+    background-color 0.4s ease, color 0.4s ease;
 }
 
 .testimonial-card:hover {
@@ -495,12 +523,10 @@
 .blog-photo-card-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    to bottom,
-    rgba(0, 0, 0, 0.08) 0%,
-    rgba(0, 0, 0, 0.25) 45%,
-    rgba(0, 0, 0, 0.82) 100%
-  );
+  background: linear-gradient(to bottom,
+      rgba(0, 0, 0, 0.08) 0%,
+      rgba(0, 0, 0, 0.25) 45%,
+      rgba(0, 0, 0, 0.82) 100%);
   border-radius: inherit;
 }
 
@@ -720,7 +746,7 @@
     grid-template-columns: 1fr 1fr;
     gap: 40px;
   }
-  
+
   .bio-center-spacer {
     display: none;
   }
@@ -728,12 +754,31 @@
 
 @media (max-width: 768px) {
   .hero-title {
-    font-size: clamp(40px, 14vw, 72px);
+    font-size: clamp(44px, 14vw, 76px);
+  }
+
+  .hero-avatar-float {
+    position: relative;
+    top: auto;
+    left: auto;
+    transform: none;
+    width: 220px;
+    height: 260px;
+    margin-top: 32px;
+    border-radius: 20px;
+  }
+
+  .hero-avatar-float img {
+    filter: grayscale(0%) brightness(1); /* No hover on mobile, show clear image */
+  }
+
+  .hero-bottom-row {
+    margin-top: 24px;
+    justify-content: center;
   }
   
-  .hero-avatar-float {
-    width: 100px;
-    height: 120px;
+  .hero-year {
+    display: none; /* Hide year on mobile to match the mockup */
   }
 
   .bio-section {
@@ -748,7 +793,7 @@
   .bio-center-spacer {
     display: none;
   }
-  
+
   .quote-text {
     font-size: 24px;
   }
@@ -763,28 +808,28 @@
   .service-row:hover .service-title {
     transform: none;
   }
-  
+
   .blog-teaser-grid {
     grid-template-columns: 1fr;
   }
-  
+
   .blog-photo-card {
     height: 320px;
   }
-  
+
   .blog-cta-card {
     min-height: 280px;
   }
-  
+
   .contact-grid {
     grid-template-columns: 1fr;
     gap: 48px;
   }
-  
+
   .contact-title {
     font-size: 48px;
   }
-  
+
   .contact-form-wrap {
     padding: 32px;
   }
