@@ -8,10 +8,10 @@ import './Home.css';
 const Skills = React.lazy(() => import('../components/Skills'));
 // Preload the Lanyard chunk in the background without executing it immediately
 const Lanyard = React.lazy(() => {
-  return new Promise(resolve => {
+  return new Promise<{ default: React.ComponentType<any> }>(resolve => {
     // Wait until the main thread is idle before actually requesting the heavy 3D chunk
-    if ('requestIdleCallback' in window) {
-      window.requestIdleCallback(() => {
+    if (typeof window !== 'undefined' && 'requestIdleCallback' in window) {
+      (window as any).requestIdleCallback(() => {
         resolve(import('../components/Lanyard'));
       });
     } else {
@@ -139,8 +139,8 @@ export const Home: React.FC = () => {
     "@context": "https://schema.org",
     "@type": "Person",
     "name": "M Abdullah",
-    "url": "https://mabdullah.dev",
-    "image": "https://mabdullah.dev/avatar.webp",
+    "url": "https://www.mabdullahdevx.online",
+    "image": "https://www.mabdullahdevx.online/avatar.webp",
     "jobTitle": "Software Engineer",
     "sameAs": [
       "https://github.com/mabdullah-devx",

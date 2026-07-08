@@ -20,7 +20,7 @@ export const SEO: React.FC<SEOProps> = ({
   twitterHandle = '@m_abdullah',
   jsonLd,
 }) => {
-  const siteUrl = 'https://mabdullah.dev'; // Replace with the actual production URL
+  const siteUrl = 'https://www.mabdullahdevx.online'; // Replace with the actual production URL
 
   return (
     <Helmet>

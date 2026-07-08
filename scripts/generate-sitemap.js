@@ -2,7 +2,7 @@ import fs from 'fs';
 import { workData, blogData } from '../src/data/cms.ts';
 
 const generateSitemap = () => {
-  const baseUrl = 'https://mabdullah.dev';
+  const baseUrl = 'https://www.mabdullahdevx.online';
   
   const staticRoutes = [
     '/',
