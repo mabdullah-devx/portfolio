@@ -712,32 +712,7 @@
   color: #ffffff;
 }
 
-/* Lanyard Loading Fallback */
-.lanyard-fallback {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 10;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: clamp(120px, 14vw, 200px);
-  height: clamp(140px, 16vw, 230px);
-}
 
-.lanyard-spinner {
-  width: 40px;
-  height: 40px;
-  border: 3px solid rgba(17, 17, 17, 0.1);
-  border-radius: 50%;
-  border-top-color: var(--color-text-primary);
-  animation: lanyard-spin 1s ease-in-out infinite;
-}
-
-@keyframes lanyard-spin {
-  to { transform: rotate(360deg); }
-}
 
 /* Responsiveness */
 @media (max-width: 1024px) {

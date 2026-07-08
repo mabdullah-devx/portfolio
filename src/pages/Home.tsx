@@ -6,19 +6,7 @@ import { workData, blogData } from '../data/cms';
 import './Home.css';
 
 const Skills = React.lazy(() => import('../components/Skills'));
-// Preload the Lanyard chunk in the background without executing it immediately
-const Lanyard = React.lazy(() => {
-  return new Promise<{ default: React.ComponentType<any> }>(resolve => {
-    // Wait until the main thread is idle before actually requesting the heavy 3D chunk
-    if (typeof window !== 'undefined' && 'requestIdleCallback' in window) {
-      (window as any).requestIdleCallback(() => {
-        resolve(import('../components/Lanyard'));
-      });
-    } else {
-      setTimeout(() => resolve(import('../components/Lanyard')), 500);
-    }
-  });
-});
+
 
 // Scroll-linked word-by-word reveal component
 const ScrollRevealQuote: React.FC<{ text: string }> = React.memo(({ text }) => {
@@ -89,12 +77,7 @@ export const Home: React.FC = () => {
   const [formState, setFormState] = useState({ name: '', email: '', project: '' });
   const [formStatus, setFormStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
   
-  // Defer rendering of the heavy 3D component so HTML/CSS paints instantly
-  const [show3D, setShow3D] = useState(false);
-  useEffect(() => {
-    const timer = setTimeout(() => setShow3D(true), 250);
-    return () => clearTimeout(timer);
-  }, []);
+
 
   const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -179,14 +162,10 @@ export const Home: React.FC = () => {
             <span className="hero-title-line">ENGINEER</span>
           </h1>
 
-          {/* Interactive Lanyard */}
-          <Suspense fallback={
-            <div className="lanyard-fallback">
-              <div className="lanyard-spinner"></div>
-            </div>
-          }>
-            {show3D && <Lanyard position={[0, 0, 24]} gravity={[0, -40, 0]} frontImage="/avatar.png" backImage="/avatar.png" />}
-          </Suspense>
+          {/* Center Image */}
+          <div className="hero-center-image hero-entrance-anim-delay" style={{ textAlign: 'center', margin: '40px 0' }}>
+            <img src="/avatar.png" alt="M Abdullah" className="hero-avatar" style={{ width: 'clamp(120px, 14vw, 200px)', borderRadius: '20px' }} />
+          </div>
 
           {/* Bottom row */}
           <div className="hero-bottom-row hero-entrance-anim-delay-2">

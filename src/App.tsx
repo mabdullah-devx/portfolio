@@ -4,6 +4,7 @@ import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
 import ErrorBoundary from './components/ErrorBoundary';
+import { SpeedInsights } from '@vercel/speed-insights/react';
 
 const Home = lazy(() => import('./pages/Home'));
 const Work = lazy(() => import('./pages/Work'));
@@ -15,6 +16,7 @@ const NotFound = lazy(() => import('./pages/NotFound'));
 const App: React.FC = () => {
   return (
     <ErrorBoundary>
+      <SpeedInsights />
       <Router>
         <ScrollToTop />
         <div className="app-container">
