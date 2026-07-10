@@ -40,7 +40,7 @@ export const Footer: React.FC = () => {
           <div className="footer-contact-col">
             <span className="footer-col-label">/Contact</span>
             <a href="mailto:hello@mabdullah.dev" className="footer-email-link">
-              hello@mabdullah.dev
+              hello@mabdullahdevx.online
             </a>
           </div>
         </div>
